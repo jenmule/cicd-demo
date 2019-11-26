@@ -48,11 +48,11 @@ pipeline {
                 sh 'mvn clean test'
                 publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: false, reportDir: 'target\\site\\munit\\coverage', reportFiles: 'summary.html', reportName: 'Code Coverage', reportTitles: ''])
             }
-            post {
+            /*post {
                 success {
                     junit 'target/surefire-reports/**-/*.xml'
                 }
-            }
+            }*/
         }
         /*stage('Deploy CloudHub - DEV') {
               when {
