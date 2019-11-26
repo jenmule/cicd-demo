@@ -46,7 +46,7 @@ pipeline {
         stage('Unit Test') {
             steps {
                 sh 'mvn clean test'
-                publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: false, reportDir: 'target\\munit-reports\\coverage', reportFiles: 'summary.html', reportName: 'Code Coverage', reportTitles: ''])
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: false, reportDir: 'target\\site\\munit\\coverage', reportFiles: 'summary.html', reportName: 'Code Coverage', reportTitles: ''])
             }
             post {
                 success {
