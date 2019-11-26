@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="20fa2664-45a7-4d9f-b03a-eb7cee51e278" >
+		<http:listener-connection host="0.0.0.0" port="8091" />
+	</http:listener-config>
+	<flow name="cicd-demoFlow" doc:id="a2690837-184b-49f7-b3a6-0c9affa4875e" >
+		<http:listener doc:name="Listener" doc:id="bf19444c-beba-459e-bba6-b586408ca4fd" config-ref="HTTP_Listener_config" path="/ping"/>
+		<set-payload value="#['pong']" doc:name="Set Payload" doc:id="59dcaeb2-f3dc-4906-abe1-ad71bf2096a8" />
+		<ee:transform doc:name="Transform Message" doc:id="6de2fb86-b3c3-4520-bbcc-48ac6e65ca2b" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output text/plain
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

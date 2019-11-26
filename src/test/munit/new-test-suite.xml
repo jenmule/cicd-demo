@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="new-test-suite.xml" />
+	<munit:test name="new-test-suite-cicd-demoFlowTest" description="Test" doc:id="5e0c90fb-1da9-4de0-92a1-b7310bdbbec2" >
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to cicd-demoFlow" doc:id="7e098f73-3ef4-49ea-81f8-775da44d2cc4" name="cicd-demoFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="163bb74b-8dbf-4960-b7bc-97fb5fd8f1cb" expression="#[output text/plain ---payload]" is="#[MunitTools::equalTo('pong')]" message="Payload is not Pong"/>
+		</munit:validation>
+	</munit:test>
+
+</mule>
