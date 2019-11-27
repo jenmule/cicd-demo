@@ -63,7 +63,7 @@ pipeline {
                  DEPLOY_TO = "${env.CH_ENV_QA}"
                       }
                steps {
-                      sh 'mvn clean package deploy -P cloudhub -DmuleDeploy -DANYPOINT_USERNAME=$ANYPOINT_USR -DANYPOINT_PASSWORD=$ANYPOINT_PSW -DCH_ENV=${env.DEPLOY_TO} -DCH_RGN=eu-west-1 -DCH_WORKERTYPE=MICRO -DCH_WORKERS=1'
+                      sh "mvn clean package deploy -P cloudhub -DmuleDeploy -DANYPOINT_USERNAME=$ANYPOINT_USR -DANYPOINT_PASSWORD=$ANYPOINT_PSW -DCH_ENV=${env.DEPLOY_TO} -DCH_RGN=eu-west-1 -DCH_WORKERTYPE=MICRO -DCH_WORKERS=1"
                     }
         }
        /*stage('Deploy CloudHub - PRODUCTION') {
@@ -95,12 +95,12 @@ pipeline {
         }*/
         /*stage('Deploy ARM') {
             steps {
-                sh 'mvn deploy -P arm -DANYPOINT_USERNAME=$ANYPOINT_USR -DANYPOINT_PASSWORD=$ANYPOINT_PSW -DARM_ENV=$DEPLOY_TO -DARM_TARGET=vm-mule -DARM_TARGET_TYPE=server'
+                sh "mvn deploy -P arm -DANYPOINT_USERNAME=$ANYPOINT_USR -DANYPOINT_PASSWORD=$ANYPOINT_PSW -DARM_ENV=$DEPLOY_TO -DARM_TARGET=vm-mule -DARM_TARGET_TYPE=server"
             }
         }
         stage('Deploy Standalone') {
             steps {
-                sh 'mvn deploy -P standalone -Dmule.home=/home/sab/Downloads/opt/mule3'
+                sh "mvn deploy -P standalone -Dmule.home=/home/sab/Downloads/opt/mule3"
             }
         }
         stage('Artifact') {
