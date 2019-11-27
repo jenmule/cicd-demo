@@ -24,10 +24,10 @@
 		<anypoint.businessGroup>SabOrg</anypoint.businessGroup>
 
 		<!-- CLOUDHUB -->
-		<cloundhub.env>${CH_ENV}</cloundhub.env>
-		<cloundhub.region>${CH_RGN}</cloundhub.region>
-		<cloundhub.workerType>${CH_WORKERTYPE}</cloundhub.workerType>
-		<cloundhub.workers>${CH_WORKERS}</cloundhub.workers>
+		<cloudhub.env>${CH_ENV}</cloudhub.env>
+		<cloudhub.region>${CH_RGN}</cloudhub.region>
+		<cloudhub.workerType>${CH_WORKERTYPE}</cloudhub.workerType>
+		<cloudhub.workers>${CH_WORKERS}</cloudhub.workers>
 
 		<!-- ARM -->
 		<arm.target.name>${ARM_TARGET}</arm.target.name>
@@ -93,7 +93,7 @@
 								<username>${anypoint.username}</username>
 								<password>${anypoint.password}</password>
 								<applicationName>${artifactId}-${maven.build.timestamp}</applicationName>
-								<environment>${cloundhub.env}</environment>
+								<environment>${cloudhub.env}</environment>
 								<businessGroup>${anypoint.businessGroup}</businessGroup>
 								<uri>${anypoint.uri}</uri>
 								<workerType>${cloudhub.workerType}</workerType>
