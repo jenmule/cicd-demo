@@ -63,7 +63,7 @@ pipeline {
                  DEPLOY_TO = "${env.CH_ENV_QA}"
                       }
                steps {
-                      sh 'mvn deploy -P cloudhub -DANYPOINT_USERNAME=$ANYPOINT_USR -DANYPOINT_PASSWORD=$ANYPOINT_PSW -DCH_ENV=${env.DEPLOY_TO} -DCH_RGN=eu-west-1 -DCH_WORKERTYPE=Micro -DCH_WORKERS=1'
+                      sh 'mvn clean package deploy -P cloudhub -DmuleDeploy -DANYPOINT_USERNAME=$ANYPOINT_USR -DANYPOINT_PASSWORD=$ANYPOINT_PSW -DCH_ENV=${env.DEPLOY_TO} -DCH_RGN=eu-west-1 -DCH_WORKERTYPE=Micro -DCH_WORKERS=1'
                     }
         }
        /*stage('Deploy CloudHub - PRODUCTION') {
