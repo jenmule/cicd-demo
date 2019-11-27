@@ -54,21 +54,10 @@ pipeline {
                 }
             }*/
         }
-        /*stage('Deploy CloudHub - DEV') {
-              when {
-                    environment name: 'DEPLOY_TARGET', value: 'CH'
-              }
-              environment {
-                DEPLOY_TO = "${env.CH_ENV_DEV}"
-                }
-              steps {
-                sh 'mvn deploy -P cloudhub -DANYPOINT_USERNAME=$ANYPOINT_USR -DANYPOINT_PASSWORD=$ANYPOINT_PSW -DCH_ENV=${env.DEPLOY_TO} -DCH_RGN=eu-west-1 -DCH_WORKERTYPE=Micro -DCH_WORKERS=1'
-              }
-        }
        stage('Deploy CloudHub - QA') {
                when {
                  environment name: 'DEPLOY_TARGET', value: 'CH'
-                 anyOf { branch 'develop'; branch 'release' }
+                 anyOf { branch 'develop'; branch 'master' }
                }
                environment {
                  DEPLOY_TO = "${env.CH_ENV_QA}"
@@ -76,7 +65,7 @@ pipeline {
                steps {
                       sh 'mvn deploy -P cloudhub -DANYPOINT_USERNAME=$ANYPOINT_USR -DANYPOINT_PASSWORD=$ANYPOINT_PSW -DCH_ENV=${env.DEPLOY_TO} -DCH_RGN=eu-west-1 -DCH_WORKERTYPE=Micro -DCH_WORKERS=1'
                     }
-        }*/
+        }
        /*stage('Deploy CloudHub - PRODUCTION') {
               when {
                 allOf { branch 'develop'; environment name: 'DEPLOY_TARGET', value: 'CH' }
